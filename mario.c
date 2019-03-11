@@ -6,7 +6,7 @@ void mario(int);
 int main(void)
 {    
     int height = get_int("Enter height: ");
-    while (height < 1) {
+    while (height < 1 || height > 8) {
         height = get_int("Enter height: ");
     }
     mario(height);  
