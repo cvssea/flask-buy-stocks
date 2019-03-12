@@ -32,15 +32,15 @@ void build_pyramid(int height, int gap)
             {
                 if (j > height && j < height + gap)
                 {
-                    printf(" ")
+                    printf(" ");
                 }
                 else {
-                    printf("#") 
+                    printf("#");
                 }
             }
             else 
             {
-                printf(" ")
+                printf(" ");
             }
         }
         printf("\n");
