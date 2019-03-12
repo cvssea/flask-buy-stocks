@@ -34,7 +34,8 @@ void build_pyramid(int height, int gap)
                 {
                     printf(" ");
                 }
-                else {
+                else 
+                {
                     printf("#");
                 }
             }
