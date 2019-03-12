@@ -28,7 +28,20 @@ void build_pyramid(int height, int gap)
     {
         for (int j = width; j > 0; j--)
         {
-            j >= height - i && j <= height + i + gap ? j > height && j < height + gap ? printf(" ") : printf("#") : printf(" ");
+            if (j >= height - i && j <= height + i + gap)
+            {
+                if (j > height && j < height + gap)
+                {
+                    printf(" ")
+                }
+                else {
+                    printf("#") 
+                }
+            }
+            else 
+            {
+                printf(" ")
+            }
         }
         printf("\n");
     }
