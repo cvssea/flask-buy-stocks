@@ -8,10 +8,7 @@ string card_type(long);
 int main(void)
 {
     long cc_number = get_cc();
-    if (is_valid_luhn(cc_number))
-    {
-        printf("%s", card_type(cc_number));
-    }
+    printf("%s", card_type(cc_number));
 }
 
 long get_cc()
@@ -38,7 +35,12 @@ int is_valid_luhn(long cc_number)
 
 string card_type(long cc_number)
 {
-    while (cc_number > 100) {
+    if (!is_valid_luhn(cc_number) || cc_number < 1000000000000)
+    {
+        return "INVALID\n";
+    }
+    while (cc_number > 100)
+    {
         cc_number /= 10;
     }
     if (cc_number == 34 || cc_number == 37) 
