@@ -5,7 +5,7 @@
 
 bool is_alpha(string);
 int shift(char);
-string encrypt(string, string);
+string encrypt(string, string); 
 char get_shifted_char(char, int);
 
 int main(int argc, string argv[])
@@ -74,7 +74,6 @@ string encrypt(string plain_text, string key)
 
 char get_shifted_char(char c, int key) 
 {
-    // is lowercase?
     if (islower(c))
     {
         if (c + key > 122) 
@@ -86,7 +85,7 @@ char get_shifted_char(char c, int key)
             c += key;   
         }
     }
-    // is uppercase?
+    
     if (isupper(c))
     {
         if (c + key > 90) 
