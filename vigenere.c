@@ -28,7 +28,7 @@ bool is_alpha(string keyword)
 {
     for (int i = 0, n = strlen(keyword); i < n; i++)
     {
-        if(!isalpha(keyword[i]))
+        if (!isalpha(keyword[i]))
         {
             return false;
         }
@@ -62,7 +62,7 @@ string encrypt(string plain_text, string key)
         {
             c = get_shifted_char(c, shift(key[current_key]));
             current_key++;
-            if(current_key == strlen(key))
+            if (current_key == strlen(key))
             {
                 current_key = 0;
             }
