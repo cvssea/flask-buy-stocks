@@ -44,7 +44,7 @@ string encrypt(string plain_text, int key)
         {
             if (c + key > 122) 
             {
-                c = (c + key) % 122 + 96;
+                c = (c + key) % 122 + 96; // wrapping
             }
             else 
             {
@@ -54,8 +54,14 @@ string encrypt(string plain_text, int key)
         // is uppercase?
         if (c > 64 && c < 91)
         {
-            if (c + key > 90) c = (c + key) % 90 + 64; //wrapping
-            else c = c + key;
+            if (c + key > 90) 
+            {
+                c = (c + key) % 90 + 64; //wrapping 
+            }
+            else
+            {
+                c = c + key;
+            }
         }
         cipher_text[i] = c;
     } // end of for loop
