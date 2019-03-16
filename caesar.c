@@ -32,15 +32,24 @@ int main(int argc, string argv[])
 string encrypt(string plain_text, int key)
 {
     string cipher_text = plain_text;
-    if (key > 25) key = key % 26;
+    if (key > 25) 
+    {
+        key = key % 26; 
+    }
     for (int i = 0, n = strlen(plain_text); i < n; i++)
     {
         int c = (int)plain_text[i]; // left untouched if not letter
         // is lowercase?
         if (c > 96 && c < 123)
         {
-            if (c + key > 122) c = (c + key) % 122 + 96; // wrapping
-            else c += key;
+            if (c + key > 122) 
+            {
+                c = (c + key) % 122 + 96;
+            }
+            else 
+            {
+                c += key;   
+            }
         }
         // is uppercase?
         if (c > 64 && c < 91)
