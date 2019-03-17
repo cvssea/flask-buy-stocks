@@ -76,7 +76,9 @@ int main(int argc, char *argv[])
             
             if (triple.rgbtRed == 0xff)
             {
-                triple.rgbtRed = 0xA0; triple.rgbtGreen = 0xff; triple.rgbtBlue = 0xff; 
+                triple.rgbtRed = 0xA0;
+                triple.rgbtGreen = 0xff;
+                triple.rgbtBlue = 0xff; 
             }
 
             // write RGB triple to outfile
