@@ -69,8 +69,21 @@ bool load(const char *dictionary)
         strcpy(new_node->word, word);
         new_node->next = NULL;
 
+        // if (hashtable[hashed])
+        // {
+        //     for (node *ptr = hashtable[hashed]; ptr != NULL; ptr = ptr->next)
+        //     {
+        //         if (!ptr->next)
+        //         {
+        //             ptr->next = new_node;
+        //             break;
+        //         }
+        //     }
+        // }
+        // else hashtable[hashed] = new_node;
+
         // check if nothing at index
-        if (!hashtable[hashed])
+        if (hashtable[hashed] == NULL)
         {
             // nothing at index -> add new node
             hashtable[hashed] = new_node;
@@ -81,16 +94,10 @@ bool load(const char *dictionary)
             new_node->next = hashtable[hashed];
             hashtable[hashed] = new_node;
         }
-
-        //free memory
-        //free(new_node);
     }
 
     // Close dictionary
     fclose(file);
-
-    // load test
-    //printf("a word: %s\n", hashtable[0]->word);
 
     // Indicate success
     return true;
@@ -99,44 +106,34 @@ bool load(const char *dictionary)
 // Returns number of words in dictionary if loaded else 0 if not yet loaded
 unsigned int size(void)
 {
-    // TODO
-    //open dictionary
-    FILE *file = fopen(DICTIONARY, "r");
-    if (!file)
-    {
-        printf("Could not open dictionary.\n");
-        return 0;
-    }
-
-    // Buffer for a word
-    char word[LENGTH + 1];
-
-    // count words
     int size = 0;
-    while (fscanf(file, "%s", word) != EOF)
+    for (int i = 0; i < N; i++)
     {
+        for (node *ptr = hashtable[i]; ptr->next != NULL; ptr = ptr->next)
+        {
+            size++;
+        }
         size++;
     }
-    fclose(file);
     return size;
 }
 
 // Returns true if word is in dictionary else false
 bool check(const char *word)
 {
-    // TODO
+
     // get index
     int hashed = hash(word);
+    //printf("check(hash) %i\n", hashed);
 
-    //check for word
-    for (node *ptr = hashtable[hashed]; ptr->next != NULL; ptr = ptr->next)
+    //check word
+    for (node *ptr = hashtable[hashed]; ptr != NULL; ptr = ptr->next)
     {
-        if (strcasecmp(ptr->word, word) == 0)
+        if (strcasecmp(word, ptr->word) == 0)
         {
             return true;
         }
     }
-
     return false;
 }
 
