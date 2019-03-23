@@ -125,7 +125,15 @@ bool check(const char *word)
     // check every letter
     for (int i = 0; i < length; i++)
     {
-        index = hash(word[i]);
+        //check for apostrophe
+        if (word[i] == '\'')
+        {
+            index = 26;
+        }
+        else
+        {
+            index = hash(word[i]);
+        }
         // if pointer is null word doesn't exist
         if (!ptr->children[index])
         {
