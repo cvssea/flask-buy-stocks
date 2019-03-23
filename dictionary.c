@@ -109,11 +109,14 @@ unsigned int size(void)
     int size = 0;
     for (int i = 0; i < N; i++)
     {
-        for (node *ptr = hashtable[i]; ptr->next != NULL; ptr = ptr->next)
+        if (hashtable[i])
         {
+            for (node *ptr = hashtable[i]; ptr->next != NULL; ptr = ptr->next)
+            {
+                size++;
+            }
             size++;
         }
-        size++;
     }
     return size;
 }
@@ -127,11 +130,14 @@ bool check(const char *word)
     //printf("check(hash) %i\n", hashed);
 
     //check word
-    for (node *ptr = hashtable[hashed]; ptr != NULL; ptr = ptr->next)
+    if (hashtable[hashed])
     {
-        if (strcasecmp(word, ptr->word) == 0)
+        for (node *ptr = hashtable[hashed]; ptr != NULL; ptr = ptr->next)
         {
-            return true;
+            if (strcasecmp(word, ptr->word) == 0)
+            {
+                return true;
+            }
         }
     }
     return false;
