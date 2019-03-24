@@ -10,11 +10,11 @@ def main():
 
 
 def mario(height):
-    gap = 2
+    gap = 3
 
     for i in range(height):
-        for j in range(height + gap + i + 1):
-            if j > height - 1 - i:
+        for j in range(1, height + gap + i + 1):
+            if j >= height - i:
                 if j > height and j < height + gap:
                     print(" ", end="")
                 else:
