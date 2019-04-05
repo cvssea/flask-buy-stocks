@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block main %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</td>
+                <th scope="col">House</td>
+                <th scope="col">Position</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in sheet_data %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script>
+    $('table')['DataTable']({'info':![],'ordering':!![],'paging':![],'searching':![]});
+</script>
+{% endblock %}

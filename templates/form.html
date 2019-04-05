@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+    <h1 class="mb-3">Form</h1>
+
+    <!-- http://getbootstrap.com/docs/4.1/components/forms/ -->
+    <form action="/form" method="post">
+
+        <!-- TODO -->
+        <div class="form-group row">
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="name" placeholder="Name" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2">
+                <select name="house" id="house" class="form-control">
+                    <option value="" selected disabled>House</option>
+                    <option value="Griffindor">Griffindor</option>
+                    <option value="Hufflepuff">Hufflepuff</option>
+                    <option value="Ravenclaw">Ravenclaw</option>
+                    <option value="Slytherin">Slytherin</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-check">
+                <input type="radio" class="form-check-input" name="role" id="beater" value="beater">
+                <label for="beater" class="form-check-label">Beater</label>
+            </div>
+            <div class="form-check">
+                <input type="radio" class="form-check-input" name="role" id="chaser" value="chaser">
+                <label for="chaser" class="form-check-label">Chaser</label>
+            </div>
+            <div class="form-check">
+                <input type="radio" class="form-check-input" name="role" id="keeper" value="keeper">
+                <label for="keeper" class="form-check-label">Keeper</label>
+            </div>
+        </div>
+
+        <!-- http://getbootstrap.com/docs/4.1/components/buttons/ -->
+        <button class="btn btn-primary" type="submit">Submit</button>
+
+    </form>
+
+    <script>
+
+        /* TODO */
+
+    </script>
+
+{% endblock %}
