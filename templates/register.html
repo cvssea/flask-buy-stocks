@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <form action="/register" method="POST">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" type="text" name="username" placeholder="Username">
+            <p id="error"></p>
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="Password" name="password" id="username">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="Re-type password" name="confirmation">
+        </div>
+        <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+    <script>
+        let form = document.querySelector("form");
+        form.addEventListener("submit", event => {
+            event.preventDefault();
+            let username = document.querySelector("#username").value;
+            fetch(`/check?username=${username}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data == 'false') {
+                        document.querySelector('#error').textContent = 'Username not available'
+                    } else {
+                        form.submit();
+                    }
+                });
+        });
+    </script>
+{% endblock %}
